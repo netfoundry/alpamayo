@@ -1,6 +1,9 @@
 <div align="center">
 
 # 🏔️ Alpamayo 1
+This Repository is a fork of the original NVIDIA Alpamayo 1 project with an example
+zitification of the original inference test. This README has been modified with instructions
+to setup and run the zitified version over a NetFoundry Network.
 
 ### Bridging Reasoning and Action Prediction for Generalizable Autonomous Driving
 
@@ -81,6 +84,7 @@ alpamayo/
 │       ├── helper.py                    # Utility functions
 │       ├── load_physical_aiavdataset.py # Dataset loader
 │       ├── test_inference.py            # Inference test script
+        ├── ztest_inference.py           # zitified Inference test script
 ├── pyproject.toml                       # Project dependencies
 └── uv.lock                              # Locked dependency versions
 ```
