@@ -99,11 +99,12 @@ Get your token at: https://huggingface.co/settings/tokens
 ### Test script
 
 NOTE: This script will download both some example data (relatively small) and the model weights (22 GB).
-The latter can be particularly slow depending on network bandwidth.
-For reference, it takes around 2.5 minutes on a 100 MB/s wired connection.
+The latter can be particularly slow depending on network bandwidth. **The script will download the model over openziti
+note the 22GB will be sent over your Cloud/NetFoundry network so be aware of associated data costs. Also not the model will be
+cached in ~/.cache/huggingface/hub in sub-directories after the first download**.
 
 ```bash
-python src/alpamayo_r1/test_inference.py
+python src/alpamayo_r1/ztest_inference.py
 ```
 
 In case you would like to obtain more trajectories and reasoning traces, please feel free to change
