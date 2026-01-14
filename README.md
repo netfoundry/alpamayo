@@ -104,7 +104,7 @@ and the 22GB will be sent over your Cloud/NetFoundry network so be aware of asso
 cached in ~/.cache/huggingface/hub in sub-directories after the first download**.
 
 ```bash
-python src/alpamayo_r1/ztest_inference.py
+python3 src/alpamayo_r1/ztest_inference.py --ziti-identity alpamayo.json
 ```
 
 In case you would like to obtain more trajectories and reasoning traces, please feel free to change
