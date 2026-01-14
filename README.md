@@ -34,7 +34,7 @@ sudo apt upgrade
 sudo apt install git
 #if not installed
 curl -LsSf https://astral.sh/uv/install.sh | sh
-export PATH="$HOME/.local/bin:$PATH
+export PATH="$HOME/.local/bin:$PATH"
 sudo apt-get install -y nvidia-cuda-toolkit  
 ```
 
