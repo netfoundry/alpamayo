@@ -17,7 +17,6 @@
 # End-to-end example script for the inference pipeline:
 # This script loads a dataset, runs inference, and computes the minADE.
 # It can be used to test the inference pipeline.
-
 # The following is a modification based on the original test_inference.py to work with zitified environment by NetFoundry 2025-01-13
 
 
