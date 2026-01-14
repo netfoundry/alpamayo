@@ -67,8 +67,8 @@ def main():
                 data=model_inputs,
                 top_p=0.98,
                 temperature=0.6,
-                num_traj_samples=10,  # Feel free to raise this for more output trajectories and CoC traces.
-                max_generation_length=400,
+                num_traj_samples=1,  # Feel free to raise this for more output trajectories and CoC traces.
+                max_generation_length=256,
                 return_extra=True,
             )
 
