@@ -100,7 +100,7 @@ Get your token at: https://huggingface.co/settings/tokens
 
 NOTE: This script will download both some example data (relatively small) and the model weights (22 GB).
 The latter can be particularly slow depending on network bandwidth. **The script will download the model over openziti
-note the 22GB will be sent over your Cloud/NetFoundry network so be aware of associated data costs. Also not the model will be
+and the 22GB will be sent over your Cloud/NetFoundry network so be aware of associated data costs. Also note the model will be
 cached in ~/.cache/huggingface/hub in sub-directories after the first download**.
 
 ```bash
