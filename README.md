@@ -15,22 +15,72 @@ to setup and run the zitified version over a NetFoundry Network.
 
 _Note: Following the release of [NVIDIA Alpamayo](https://nvidianews.nvidia.com/news/alpamayo-autonomous-vehicle-development) at CES 2026, Alpamayo-R1 has been renamed to Alpamayo 1._
 
-### 1. Install uv (if not already installed)
+## Setup and Configure the Example
+
+![Diagram](network.png)
+
+Create or use an existing ziti network with at least one NF hosted edge router. This can be accomplished using the NetFoundry
+Console.
+
+## 1. Install prereqs
+
+On an ubuntu 24.04 system with an NVidia GPU that meets the Alpamayo
+   hardware requirements
+   a. install prereqs 
 
 ```bash
+sudo apt update
+sudo apt upgrade
+sudo apt install git
+#if not installed
 curl -LsSf https://astral.sh/uv/install.sh | sh
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH
+sudo apt-get install -y nvidia-cuda-toolkit  
 ```
 
-### 2. Set up the environment
+   b. ## Build the Example
+      On the linux system that will run the Client
+      mkdir ~/repos
+      cd repos
+      git clone https://github.com/NVlabs/alpamayo.git
+
+## 2. Create a client side Netfoundry Idenetity 
+
+Create and enroll a ziti identity place the identity json file in the ~/repos/alpamayo/src on the ubuntu system in step 1.
+   ```
+   a. alpamayo_client01.json
+   ```
+
+## 3. Add a customer hosted edge router e.g. "us-east-1-alpamayo-edge01" to your network
+
+![Diagram](add_router.png)
+
+## 4. Launch the customer hosted edge-router in aws region e.g. us-east-1 
+a. follow: https://support.netfoundry.io/hc/en-us/articles/   360016342971-Deployment-Guide-for-AWS-Edge-Routers 
+
+## 5. Create a NF service named "alpqamayo-service" and use wildcard address "*.hf.co" and *.huggingface.co , protocol TCP and 443 as the
+port. Assign the router identity e.g. us-east-1-alpamayo-edge01 as the hosting entity and forward address, protocol and port to yes.
+ ![Diagram](service.png)
+
+5. Create a service policy to bind the identity to the NF service e.g.
+
+![Diagram](service_policy.png)
+
+## 6. Create a router policy and with the NF hosted edge-router and the alpamayo_client01 as the identity e.g.
+
+![Diagram](router_policy.png)
+
+
+### 7. Set up the virtual environment
 
 ```bash
 uv venv ar1_venv
 source ar1_venv/bin/activate
 uv sync --active
+uv pip uninstall hf-xet #Remove Hugging Face storage acceleration layer (Bypasses OpenZiti interception)
 ```
 
-### 3. Authenticate with HuggingFace
+### 4. Authenticate with HuggingFace
 
 The model requires access to gated resources. Request access here:
 - 🤗 [Physical AI AV Dataset](https://huggingface.co/datasets/nvidia/PhysicalAI-Autonomous-Vehicles)
